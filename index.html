@@ -19,7 +19,6 @@
 :root{--night:#141412;--gold:#e8b84b;--ink:#f4efe6;--muted:#9a937f;--emerald:#1f3b2c;
 --display:"Outfit",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:auto}
 body{background:var(--night);color:var(--ink);font-family:var(--display)}
 img{max-width:100%;display:block}
 
@@ -34,29 +33,42 @@ transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
 .nav-cta:hover::after{transform:scaleX(1)}
 .nav-cta:active{transform:translateY(1px)}
 
-/* Journey scrub */
-.journey{position:relative}
-.j-track{position:relative}
-.j-sticky{position:sticky;top:0;height:100dvh;overflow:hidden}
-.j-sticky video,.j-sticky img.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.j-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgb(20 20 18/.72) 0%,rgb(20 20 18/.15) 45%,rgb(20 20 18/.35) 100%)}
-.chapter{position:absolute;z-index:5;max-width:min(34rem,86vw);opacity:0;transform:translateY(14px);
-transition:opacity .5s ease,transform .5s ease;pointer-events:none}
-.chapter.on{opacity:1;transform:none;pointer-events:auto}
-.chapter.left{left:clamp(1.2rem,6vw,4rem);bottom:14dvh}
-.chapter.right{right:clamp(1.2rem,6vw,4rem);bottom:14dvh;text-align:right}
+/* Hero film */
+.hero{position:relative;height:100dvh;overflow:hidden}
+.hero video,.hero img.end-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero img.end-frame{opacity:0;transition:opacity .6s ease}
+.hero.show-end img.end-frame{opacity:1}
+.scrim{position:absolute;inset:0;background:linear-gradient(to top,rgb(20 20 18/.72) 0%,rgb(20 20 18/.12) 45%,rgb(20 20 18/.35) 100%)}
+.title{position:absolute;z-index:5;left:clamp(1.2rem,6vw,4rem);bottom:12dvh;max-width:min(36rem,88vw);
+opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease;pointer-events:none}
+.title.on{opacity:1;transform:none;pointer-events:auto}
 .kicker{font-family:var(--mono);color:var(--gold);letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;margin-bottom:.7rem}
-.chapter h2{font-size:clamp(2rem,6vw,3.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.02;
+.title h1,.title h2{font-size:clamp(2.1rem,6.2vw,3.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.02;
 text-shadow:0 2px 24px rgb(0 0 0/.6)}
-.chapter p{margin-top:.9rem;line-height:1.55;color:var(--ink);max-width:34rem;text-shadow:0 1px 14px rgb(0 0 0/.7)}
-.chapter.right p{margin-left:auto}
+.title p{margin-top:.9rem;line-height:1.55;text-shadow:0 1px 14px rgb(0 0 0/.7)}
+.hero-cta{display:inline-block;margin-top:1.3rem;position:relative;overflow:hidden;background:var(--gold);color:#1c1607;
+font-weight:800;font-size:1rem;letter-spacing:.04em;padding:.85rem 2.2rem;border-radius:999px;text-decoration:none;
+transition:transform .14s ease,box-shadow .2s ease;box-shadow:0 10px 40px rgb(232 184 75/.25)}
+.hero-cta:hover{box-shadow:0 14px 55px rgb(232 184 75/.4)}
+.hero-cta:active{transform:scale(.98)}
+.replay{position:absolute;z-index:6;right:clamp(1.2rem,4vw,2.5rem);bottom:1.4rem;display:none;
+font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+background:rgb(20 20 18/.55);border:1px solid rgb(244 239 230/.25);border-radius:999px;padding:.5rem 1rem;cursor:pointer}
+.replay:hover{color:var(--ink);border-color:rgb(244 239 230/.5)}
+.hero.done .replay{display:block}
+
+/* Feature cards */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.9rem,2vw,1.6rem);
+padding:clamp(3.5rem,8vw,6rem) clamp(1.2rem,5vw,3rem) 0}
+.card{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgb(232 184 75/.2);
+background:#191b16;box-shadow:0 18px 50px rgb(0 0 0/.45)}
+.card img{width:100%;aspect-ratio:16/10;object-fit:cover;opacity:.88}
+.card-body{padding:1.2rem 1.3rem 1.5rem}
+.card h3{font-size:1.25rem;font-weight:800;letter-spacing:-.01em;margin-bottom:.5rem}
+.card p{color:var(--muted);line-height:1.55;font-size:.95rem}
 .tags{display:flex;gap:.5rem;margin-top:.9rem;flex-wrap:wrap}
-.chapter.right .tags{justify-content:flex-end}
-.tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
-border:1px solid rgb(232 184 75/.5);border-radius:999px;padding:.3rem .7rem;background:rgb(20 20 18/.45)}
-.j-progress{position:absolute;z-index:6;top:50%;right:.9rem;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem}
-.j-dot{width:7px;height:7px;border-radius:50%;background:rgb(244 239 230/.28);transition:background .3s,transform .3s}
-.j-dot.on{background:var(--gold);transform:scale(1.35)}
+.tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+border:1px solid rgb(232 184 75/.5);border-radius:999px;padding:.28rem .65rem;background:rgb(20 20 18/.45)}
 
 /* Sections */
 .h2{font-size:clamp(1.8rem,4.5vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.05;margin-bottom:.8rem}
@@ -97,18 +109,17 @@ padding:1.6rem clamp(1.2rem,4vw,2.5rem) 2.2rem;border-top:1px solid rgb(244 239 
 .dim{color:var(--muted)}
 
 @media (max-width:760px){
+.features{grid-template-columns:1fr}
 .shots{grid-template-columns:1fr}
 .shot-a,.shot-c{transform:none}
 .trans{grid-template-columns:1fr}
 .trans img{max-width:300px}
-.chapter.right{text-align:left;right:auto;left:clamp(1.2rem,6vw,4rem)}
-.chapter.right .tags{justify-content:flex-start}
-.chapter.right p{margin-left:0}
 }
 @media (prefers-reduced-motion:reduce){
 .ticker-track{animation:none}
 .sweep{display:none}
-.chapter{transition:none}
+.title{transition:none}
+.hero img.end-frame{transition:none}
 }
 </style>
 </head>
@@ -118,45 +129,51 @@ padding:1.6rem clamp(1.2rem,4vw,2.5rem) 2.2rem;border-top:1px solid rgb(244 239 
   <a class="nav-cta" href="https://app.cdlfastpass.com">Open the app</a>
 </header>
 
-<section class="journey" aria-label="The night haul">
-  <div class="j-track" id="jtrack">
-    <div class="j-sticky">
-      <img class="poster" id="poster" src="/assets/world/haul-01-poster.png" alt="">
-      <video id="vid" muted playsinline preload="auto"></video>
-      <div class="j-scrim"></div>
+<section class="hero" id="hero" aria-label="The night haul">
+  <video id="vid" muted playsinline preload="auto" poster="/assets/world/film-poster.jpg"></video>
+  <img class="end-frame" src="/assets/world/film-end.jpg" alt="" aria-hidden="true">
+  <div class="scrim"></div>
 
-      <article class="chapter left" data-i="0">
-        <div class="kicker">CDL FastPass</div>
-        <h2>Pass your CDL permit test</h2>
-        <p>Study that feels like driving, built by a real CDL school. Scroll to ride along.</p>
-      </article>
-      <article class="chapter right" data-i="1">
-        <h2>Study like you haul</h2>
-        <p>Every practice run opens with a bill of lading. Right answers keep you on schedule, and every miss comes back as a flashcard until it sticks.</p>
-        <div class="tags"><span class="tag">Haul Mode</span><span class="tag">Flashcards</span></div>
-      </article>
-      <article class="chapter left" data-i="2">
-        <h2>Your state's rules, built in</h2>
-        <p>Every state plus DC, each with its own state rules module on top of the federal core. One purchase unlocks all of it.</p>
-        <div class="tags"><span class="tag">50 states</span></div>
-      </article>
-      <article class="chapter right" data-i="3">
-        <h2>Lessons that talk you through it</h2>
-        <p>Narrated video lessons and an exam simulator that mirrors the real thing.</p>
-        <div class="tags"><span class="tag">Video lessons</span><span class="tag">Exam sim</span></div>
-      </article>
-      <article class="chapter left" data-i="4">
-        <h2>Get on the road faster</h2>
-        <p>Free to start. Your first practice haul is waiting.</p>
-        <div class="tags"><a class="tag" href="https://app.cdlfastpass.com" style="pointer-events:auto">Open the app</a></div>
-      </article>
-
-      <div class="j-progress" aria-hidden="true">
-        <div class="j-dot" data-i="0"></div><div class="j-dot" data-i="1"></div><div class="j-dot" data-i="2"></div>
-        <div class="j-dot" data-i="3"></div><div class="j-dot" data-i="4"></div>
-      </div>
-    </div>
+  <div class="title" id="titleOpen">
+    <div class="kicker">CDL FastPass</div>
+    <h1>Pass your CDL permit test</h1>
+    <p>Study that feels like driving, built by a real CDL school.</p>
   </div>
+
+  <div class="title" id="titleEnd">
+    <h2>Get on the road faster</h2>
+    <p>Free to start. Your first practice haul is waiting.</p>
+    <a class="hero-cta" href="https://app.cdlfastpass.com">Open the app</a>
+  </div>
+
+  <button class="replay" id="replay" type="button">Watch again</button>
+</section>
+
+<section class="features" aria-label="What's inside">
+  <article class="card">
+    <img src="/assets/world/still-aerial.jpg" alt="Aerial view of a semi truck on a night desert highway" loading="lazy">
+    <div class="card-body">
+      <h3>Study like you haul</h3>
+      <p>Every practice run opens with a bill of lading. Right answers keep you on schedule, and every miss comes back as a flashcard until it sticks.</p>
+      <div class="tags"><span class="tag">Haul Mode</span><span class="tag">Flashcards</span></div>
+    </div>
+  </article>
+  <article class="card">
+    <img src="/assets/world/still-pass.jpg" alt="A trailer sweeping past the windshield on a wet highway" loading="lazy">
+    <div class="card-body">
+      <h3>Your state's rules, built in</h3>
+      <p>Every state plus DC, each with its own state rules module on top of the federal core. One purchase unlocks all of it.</p>
+      <div class="tags"><span class="tag">50 states</span></div>
+    </div>
+  </article>
+  <article class="card">
+    <img src="/assets/world/still-pov.jpg" alt="Driver's view over the wheel with glowing gauges at night" loading="lazy">
+    <div class="card-body">
+      <h3>Lessons that talk you through it</h3>
+      <p>Narrated video lessons and an exam simulator that mirrors the real thing.</p>
+      <div class="tags"><span class="tag">Video lessons</span><span class="tag">Exam sim</span></div>
+    </div>
+  </article>
 </section>
 
 <section class="proof" aria-label="Inside the app">
@@ -202,74 +219,49 @@ var STATES=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Con
 var t=document.getElementById('ticker');
 STATES.concat(STATES).forEach(function(n){var s=document.createElement('span');s.textContent=n;t.appendChild(s);});
 
+var hero=document.getElementById('hero');
+var vid=document.getElementById('vid');
+var titleOpen=document.getElementById('titleOpen');
+var titleEnd=document.getElementById('titleEnd');
+var replay=document.getElementById('replay');
 var mobile=window.matchMedia('(max-width:760px)').matches;
 var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var SUF=mobile?'-mobile':'';
-var CLIPS=[1,2,3,4,5].map(function(i){return{
-  clip:'/assets/world/haul-0'+i+SUF+'.mp4',
-  poster:'/assets/world/haul-0'+i+SUF+'-poster.png'};});
-// scroll-weight per chapter (vh multiples)
-var W=[85,80,80,80,90], TOTAL=W.reduce(function(a,b){return a+b},0);
-var track=document.getElementById('jtrack');
-track.style.height=(TOTAL+100)+'vh';
+vid.src=mobile?'/assets/world/film-mobile.mp4':'/assets/world/film.mp4';
 
-var vid=document.getElementById('vid'), poster=document.getElementById('poster');
-var chapters=[].slice.call(document.querySelectorAll('.chapter'));
-var dots=[].slice.call(document.querySelectorAll('.j-dot'));
-var cur=-1, durs=[], metaLoaded=[];
-
-// preload durations lazily via a probe element per clip
-CLIPS.forEach(function(c,i){
-  var v=document.createElement('video');
-  v.preload='metadata'; v.muted=true; v.src=c.clip;
-  v.addEventListener('loadedmetadata',function(){durs[i]=v.duration;metaLoaded[i]=true;});
-});
-
-function setScene(i){
-  if(cur===i) return;
-  cur=i;
-  poster.src=CLIPS[i].poster;
-  if(!reduced){ vid.src=CLIPS[i].clip; vid.load(); }
-  chapters.forEach(function(ch){ch.classList.toggle('on', +ch.getAttribute('data-i')===i);});
-  dots.forEach(function(d){d.classList.toggle('on', +d.getAttribute('data-i')===i);});
+// The finale state: hold the last frame, show the closing title and CTA.
+function finish(){
+  hero.classList.add('show-end','done');
+  titleOpen.classList.remove('on');
+  titleEnd.classList.add('on');
 }
-var pendingT=0, seeking=false;
-function seek(tsec){
-  pendingT=tsec;
-  if(seeking||!vid.duration) return;
-  seeking=true;
-  vid.currentTime=Math.min(Math.max(pendingT,0),Math.max(vid.duration-0.05,0));
+function begin(){
+  hero.classList.remove('show-end','done');
+  titleEnd.classList.remove('on');
+  titleOpen.classList.add('on');
 }
-vid.addEventListener('seeked',function(){
-  seeking=false;
-  if(Math.abs(vid.currentTime-pendingT)>0.07) seek(pendingT);
-});
-vid.addEventListener('loadeddata',function(){ seek(pendingT); });
 
-function onScroll(){
-  var rect=track.getBoundingClientRect();
-  var vh=window.innerHeight;
-  var total=rect.height-vh;
-  var p=Math.min(Math.max(-rect.top/total,0),1);
-  // map progress across weighted chapters
-  var acc=0, i=0, local=0;
-  for(i=0;i<W.length;i++){
-    var frac=W[i]/TOTAL;
-    if(p<=acc+frac||i===W.length-1){ local=(p-acc)/frac; break; }
-    acc+=frac;
-  }
-  local=Math.min(Math.max(local,0),1);
-  setScene(i);
-  var d=durs[i]||vid.duration||1.2;
-  if(!reduced) seek(local*d);
+if(reduced){
+  // No motion: land directly on the finale frame with everything readable.
+  finish();
+  hero.classList.remove('done');
+}else{
+  begin();
+  vid.addEventListener('timeupdate',function(){
+    // Opening title rides the aerial, then clears for the dive.
+    if(vid.currentTime>2.2) titleOpen.classList.remove('on');
+    // Finale fades in while the POV shot settles.
+    if(vid.currentTime>8.4) finish();
+  });
+  vid.addEventListener('ended',finish);
+  var p=vid.play();
+  if(p&&p.catch) p.catch(function(){ finish(); hero.classList.remove('done'); });
+  replay.addEventListener('click',function(){
+    begin();
+    vid.currentTime=0;
+    var r=vid.play();
+    if(r&&r.catch) r.catch(function(){finish();});
+  });
 }
-var raf=false;
-window.addEventListener('scroll',function(){
-  if(raf) return; raf=true;
-  requestAnimationFrame(function(){raf=false;onScroll();});
-},{passive:true});
-window.addEventListener('resize',onScroll);
-setScene(0); onScroll();
 })();
 </script>
 </body>
