@@ -252,9 +252,10 @@ if(reduced){
     // Finale fades in while the POV shot settles.
     if(vid.currentTime>8.4) finish();
   });
-  vid.addEventListener('ended',finish);
+  vid.addEventListener('ended',function(){ replay.textContent='Watch again'; finish(); });
   var p=vid.play();
-  if(p&&p.catch) p.catch(function(){ finish(); hero.classList.remove('done'); });
+  // Autoplay blocked: land on the finale, but leave the button up as the way in.
+  if(p&&p.catch) p.catch(function(){ replay.textContent='Play the film'; finish(); });
   replay.addEventListener('click',function(){
     begin();
     vid.currentTime=0;
