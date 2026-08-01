@@ -130,7 +130,7 @@ padding:1.6rem clamp(1.2rem,4vw,2.5rem) 2.2rem;border-top:1px solid rgb(244 239 
 </header>
 
 <section class="hero" id="hero" aria-label="The night haul">
-  <video id="vid" muted playsinline preload="auto" poster="/assets/world/film-poster.jpg"></video>
+  <video id="vid" autoplay muted playsinline preload="auto" poster="/assets/world/film-poster.jpg"></video>
   <img class="end-frame" src="/assets/world/film-end.jpg" alt="" aria-hidden="true">
   <div class="scrim"></div>
 
@@ -226,7 +226,11 @@ var titleEnd=document.getElementById('titleEnd');
 var replay=document.getElementById('replay');
 var mobile=window.matchMedia('(max-width:760px)').matches;
 var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// muted must be set as a property before src for autoplay to clear in some engines
+vid.muted=true;
+vid.defaultMuted=true;
 vid.src=mobile?'/assets/world/film-mobile.mp4':'/assets/world/film.mp4';
+vid.load();
 
 // The finale state: hold the last frame, show the closing title and CTA.
 function finish(){
@@ -253,9 +257,23 @@ if(reduced){
     if(vid.currentTime>8.4) finish();
   });
   vid.addEventListener('ended',function(){ replay.textContent='Watch again'; finish(); });
-  var p=vid.play();
-  // Autoplay blocked: land on the finale, but leave the button up as the way in.
-  if(p&&p.catch) p.catch(function(){ replay.textContent='Play the film'; finish(); });
+  function tryPlay(){
+    var p=vid.play();
+    // Autoplay blocked: land on the finale with the button as the way in,
+    // and retry once on the first real gesture (clears iOS Low Power Mode).
+    if(p&&p.catch) p.catch(function(){
+      replay.textContent='Play the film'; finish();
+      var retry=function(){
+        window.removeEventListener('pointerdown',retry);
+        window.removeEventListener('touchstart',retry);
+        if(vid.ended||!vid.paused) return;
+        vid.play().then(begin).catch(function(){});
+      };
+      window.addEventListener('pointerdown',retry,{once:true});
+      window.addEventListener('touchstart',retry,{once:true,passive:true});
+    });
+  }
+  if(vid.readyState>=2) tryPlay(); else vid.addEventListener('loadeddata',tryPlay,{once:true});
   replay.addEventListener('click',function(){
     begin();
     vid.currentTime=0;
