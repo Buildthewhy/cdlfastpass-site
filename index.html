@@ -245,9 +245,17 @@ function begin(){
 }
 
 if(reduced){
-  // No motion: land directly on the finale frame with everything readable.
+  // Reduced motion: land on the finale frame with everything readable, but
+  // keep the play button so watching stays a choice.
+  replay.textContent='Play the film';
   finish();
-  hero.classList.remove('done');
+  replay.addEventListener('click',function(){
+    begin();
+    vid.currentTime=0;
+    var r=vid.play();
+    if(r&&r.catch) r.catch(function(){finish();});
+  });
+  vid.addEventListener('ended',function(){ replay.textContent='Watch again'; finish(); });
 }else{
   begin();
   vid.addEventListener('timeupdate',function(){
