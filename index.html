@@ -274,6 +274,19 @@ if(reduced){
     });
   }
   if(vid.readyState>=2) tryPlay(); else vid.addEventListener('loadeddata',tryPlay,{once:true});
+  // iOS Safari in Low Power Mode leaves the play() promise pending forever
+  // (no rejection), so the catch above never runs. Watchdog: if nothing is
+  // actually moving shortly after load, show the finale and the play button.
+  setTimeout(function(){
+    if(vid.paused&&vid.currentTime<0.15&&!vid.ended){
+      replay.textContent='Play the film'; finish();
+    }
+  },3000);
+  // If playback does start late (slow network, or LPM lifted), swap back
+  // to the film view from the watchdog's finale state.
+  vid.addEventListener('playing',function(){
+    if(vid.currentTime<0.5&&!vid.ended) begin();
+  });
   replay.addEventListener('click',function(){
     begin();
     vid.currentTime=0;
