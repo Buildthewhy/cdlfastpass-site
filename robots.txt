@@ -1,0 +1,66 @@
+# www.cdlfastpass.com is the marketing site. Search engines are welcome:
+# being found is the point. AI training crawlers are not, since the copy
+# and the product story are the asset.
+#
+# This file is a REQUEST, not a control. Compliant crawlers honour it.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.cdlfastpass.com/sitemap.xml
+
+# AI training and scraping crawlers, refused by name.
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
