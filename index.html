@@ -3,19 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CDL FastPass</title>
-<meta name="description" content="Pass your CDL permit test on the first try. Haul practice loads, drill every state's rules, and shift gears through study built by a real CDL school.">
+<title>CDL FastPass | Nevada CDL Permit Practice Test</title>
+<meta name="description" content="Nevada CDL permit practice tests written from the official Nevada CDL manual. General Knowledge, Air Brakes, and Combination, plus exam sims and flashcards. First 100 questions free.">
+<link rel="canonical" href="https://www.cdlfastpass.com/">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
-<meta property="og:title" content="CDL FastPass">
-<meta property="og:description" content="Pass your CDL permit test on the first try. Study built by a real CDL school.">
-<meta property="og:image" content="https://www.cdlfastpass.com/assets/og.png">
+<meta property="og:title" content="CDL FastPass | Nevada CDL Permit Practice Test">
+<meta property="og:description" content="Pass your Nevada CDL permit test on the first try. Practice written from the official manual, built by a real CDL school.">
+<meta property="og:image" content="https://www.cdlfastpass.com/assets/og.jpg">
 <meta property="og:url" content="https://www.cdlfastpass.com/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#141412">
 <!-- Advisory opt out signals for AI training crawlers. Honoured by
      compliant crawlers only; the enforcement that matters is server side. -->
 <meta name="robots" content="index, follow, noai, noimageai">
 <meta name="googlebot" content="index, follow">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "CDL FastPass", "url": "https://www.cdlfastpass.com/", "applicationCategory": "EducationalApplication", "operatingSystem": "Web", "description": "Nevada CDL permit practice tests, exam simulator, and flashcards written from the official Nevada CDL manual.", "offers": {"@type": "Offer", "price": "19.99", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is CDL FastPass free?", "acceptedAnswer": {"@type": "Answer", "text": "Your first 100 practice questions are free, no card needed. Full access is one payment of $19.99. No subscription and no renewals."}}, {"@type": "Question", "name": "Which Nevada permit tests does it cover?", "acceptedAnswer": {"@type": "Answer", "text": "General Knowledge, Air Brakes, and Combination Vehicles, the three tests most students take for a Class A permit. Doubles and Triples, Tanker, and HazMat endorsement study is included too."}}, {"@type": "Question", "name": "Where do the questions come from?", "acceptedAnswer": {"@type": "Answer", "text": "Every question is written from the official Nevada CDL manual, with the sections the manual highlights for the permit tests studied first."}}, {"@type": "Question", "name": "Do I need to download anything?", "acceptedAnswer": {"@type": "Answer", "text": "No. CDL FastPass runs in the browser on your phone, tablet, or computer. iPhone and Android apps are on the way."}}, {"@type": "Question", "name": "What if it is not for me?", "acceptedAnswer": {"@type": "Answer", "text": "Full refund within 7 days of purchase, no questions asked."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -97,6 +101,15 @@ padding:clamp(4rem,9vw,7rem) clamp(1.2rem,5vw,3rem);background:linear-gradient(1
 .ticker span{font-family:var(--mono);font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .ticker span:nth-child(7n){color:var(--gold)}
 @keyframes roll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.price{font-size:clamp(3rem,9vw,5.5rem);font-weight:800;color:var(--gold);letter-spacing:-.03em;margin:1.2rem 0 .4rem}
+.faq{max-width:46rem;margin:0 auto;padding:clamp(3rem,8vw,5rem) 1.2rem 0}
+.faq details{border-bottom:1px solid rgb(244 239 230/.1);padding:1.1rem 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:1.08rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--gold);font-weight:800}
+.faq details[open] summary::after{content:"\2013"}
+.faq details p{color:var(--muted);line-height:1.6;margin-top:.6rem;max-width:62ch}
+.title .sub{margin-top:.7rem;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;color:var(--muted)}
 .closer{text-align:center;padding:clamp(5rem,11vw,8rem) 1.2rem}
 .closer h2{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:2rem}
 .ignition{position:relative;display:inline-block;overflow:hidden;background:var(--gold);color:#1c1607;font-weight:800;
@@ -138,10 +151,12 @@ padding:1.6rem clamp(1.2rem,4vw,2.5rem) 2.2rem;border-top:1px solid rgb(244 239 
   <img class="end-frame" src="/assets/world/film-end.jpg" alt="" aria-hidden="true">
   <div class="scrim"></div>
 
-  <div class="title" id="titleOpen">
-    <div class="kicker">CDL FastPass</div>
-    <h1>Pass your CDL permit test</h1>
-    <p>Study that feels like driving, built by a real CDL school.</p>
+  <div class="title on" id="titleOpen">
+    <div class="kicker">Nevada CDL permit prep</div>
+    <h1>Pass your Nevada CDL permit test</h1>
+    <p>Practice written from the official Nevada CDL manual, built by a real CDL school.</p>
+    <a class="hero-cta" href="https://app.cdlfastpass.com">Start free</a>
+    <p class="sub">First 100 questions free. No card needed.</p>
   </div>
 
   <div class="title" id="titleEnd">
@@ -165,9 +180,9 @@ padding:1.6rem clamp(1.2rem,4vw,2.5rem) 2.2rem;border-top:1px solid rgb(244 239 
   <article class="card">
     <img src="/assets/world/still-pass.jpg" alt="A trailer sweeping past the windshield on a wet highway" loading="lazy">
     <div class="card-body">
-      <h3>Your state's rules, built in</h3>
-      <p>Every state plus DC, each with its own state rules module on top of the federal core. One purchase unlocks all of it.</p>
-      <div class="tags"><span class="tag">50 states</span></div>
+      <h3>Straight from the Nevada manual</h3>
+      <p>General Knowledge, Air Brakes, and Combination, written from the official Nevada CDL manual. The sections the manual highlights come first.</p>
+      <div class="tags"><span class="tag">Nevada</span><span class="tag">Permit tests</span></div>
     </div>
   </article>
   <article class="card">
@@ -184,9 +199,9 @@ padding:1.6rem clamp(1.2rem,4vw,2.5rem) 2.2rem;border-top:1px solid rgb(244 239 
   <h2 class="h2">Built like a rig, not a quiz app</h2>
   <p class="lede">Real Nevada night from the first screen: haul practice loads, drive the Road Trip map from Vegas to Reno, and row through the app with a real ten speed shifter.</p>
   <div class="shots">
-    <figure class="shot shot-a"><img src="/assets/shots/shot-home.png" alt="CDL FastPass home screen with the night highway hero" loading="lazy"><figcaption>Home</figcaption></figure>
-    <figure class="shot shot-b"><img src="/assets/shots/shot-roadtrip.png" alt="Road Trip progress map with a photographic truck on an aerial night highway" loading="lazy"><figcaption>Road Trip</figcaption></figure>
-    <figure class="shot shot-c"><img src="/assets/shots/shot-bol.png" alt="A bill of lading opening a practice haul with load number, route, and pay" loading="lazy"><figcaption>Haul Mode</figcaption></figure>
+    <figure class="shot shot-a"><img src="/assets/shots/shot-home.webp" alt="CDL FastPass home screen with the night highway hero" loading="lazy"><figcaption>Home</figcaption></figure>
+    <figure class="shot shot-b"><img src="/assets/shots/shot-roadtrip.webp" alt="Road Trip progress map with a photographic truck on an aerial night highway" loading="lazy"><figcaption>Road Trip</figcaption></figure>
+    <figure class="shot shot-c"><img src="/assets/shots/shot-bol.webp" alt="A bill of lading opening a practice haul with load number, route, and pay" loading="lazy"><figcaption>Haul Mode</figcaption></figure>
   </div>
 </section>
 
@@ -196,13 +211,22 @@ padding:1.6rem clamp(1.2rem,4vw,2.5rem) 2.2rem;border-top:1px solid rgb(244 239 
     <p>The app runs on a ten speed Eaton Fuller pattern. First gear is practice, fourth is the exam simulator, tenth is settings. Deliver a load on time and the app tells you to shift up: drag the knob into the glowing gate and the next section rolls in with a fresh bill of lading.</p>
     <p class="mono-line">R 1 2 3 4 5 &middot; LO/HI &middot; 6 7 8 9 10</p>
   </div>
-  <figure><img src="/assets/shots/shot-shifter.png" alt="The ten speed shifter plate with the knob in neutral" loading="lazy"></figure>
+  <figure><img src="/assets/shots/shot-shifter.webp" alt="The ten speed shifter plate with the knob in neutral" loading="lazy"></figure>
 </section>
 
-<section class="states" aria-label="Every state">
-  <h2 class="h2">One purchase. Unlimited access.</h2>
-  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
-  <p class="lede center">Fifty one jurisdictions, each with its own state rules module on top of the shared federal core. Move states, keep everything.</p>
+<section class="states" aria-label="Pricing">
+  <h2 class="h2">One payment. Yours for good.</h2>
+  <div class="price">$19.99</div>
+  <p class="lede center">Your first 100 questions are free. Unlock every practice test, exam sim, and lesson with one payment. No subscription, no renewals, and a full refund within 7 days if it is not for you.</p>
+</section>
+
+<section class="faq" aria-label="Questions">
+  <h2 class="h2">Questions</h2>
+  <details><summary>Is CDL FastPass free?</summary><p>Your first 100 practice questions are free, no card needed. Full access is one payment of $19.99. No subscription and no renewals.</p></details>
+  <details><summary>Which Nevada permit tests does it cover?</summary><p>General Knowledge, Air Brakes, and Combination Vehicles, the three tests most students take for a Class A permit. Doubles and Triples, Tanker, and HazMat endorsement study is included too.</p></details>
+  <details><summary>Where do the questions come from?</summary><p>Every question is written from the official Nevada CDL manual, with the sections the manual highlights for the permit tests studied first.</p></details>
+  <details><summary>Do I need to download anything?</summary><p>No. CDL FastPass runs in the browser on your phone, tablet, or computer. iPhone and Android apps are on the way.</p></details>
+  <details><summary>What if it is not for me?</summary><p>Full refund within 7 days of purchase, no questions asked.</p></details>
 </section>
 
 <section class="closer" aria-label="Get started">
@@ -214,16 +238,12 @@ padding:1.6rem clamp(1.2rem,4vw,2.5rem) 2.2rem;border-top:1px solid rgb(244 239 
 <footer>
   <span>CDL FastPass</span>
   <span><a class="dim" href="https://app.cdlfastpass.com/#/terms" style="color:inherit">Terms</a> &middot; <a class="dim" href="https://app.cdlfastpass.com/#/refunds" style="color:inherit">Refunds</a> &middot; <a class="dim" href="mailto:support@cdlfastpass.com" style="color:inherit">Support</a></span>
-  <span class="dim">Built by a working CDL school. Study material written from official state manuals.</span>
+  <span class="dim">Built by a working CDL school. Study material written from the official Nevada CDL manual.</span>
 </footer>
 
 <script>
 (function(){
 "use strict";
-var STATES=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];
-var t=document.getElementById('ticker');
-STATES.concat(STATES).forEach(function(n){var s=document.createElement('span');s.textContent=n;t.appendChild(s);});
-
 var hero=document.getElementById('hero');
 var vid=document.getElementById('vid');
 var titleOpen=document.getElementById('titleOpen');
@@ -264,8 +284,7 @@ if(reduced){
 }else{
   begin();
   vid.addEventListener('timeupdate',function(){
-    // Opening title rides the aerial, then clears for the dive.
-    if(vid.currentTime>2.2) titleOpen.classList.remove('on');
+    // Opening title and CTA stay up until the finale title replaces them.
     // Finale fades in while the POV shot settles.
     if(vid.currentTime>8.4) finish();
   });
